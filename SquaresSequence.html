@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Squares sequence</title>
+</head>
+<body>
+<script>
+
+
+    function squares(x, y) {
+        const newArray = [];
+        for (let i = 0; i < y; i++) {
+            if (y >= 0) {
+                newArray.push(x)
+                x *= x
+            } else {
+                return newArray
+            }
+        }
+        return newArray
+    }
+
+    squares(3, 3)
+
+
+</script>
+</body>
+</html>

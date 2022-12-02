@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vowels</title>
+</head>
+<body>
+<script>
+    function counting(str) {
+        let symbols = str.split('');
+        let countingVowels = 0;
+        let vowels = ["а", "о", "и", "е", "ё", "э", "ы", "у", "ю", "я"];
+        for (let i = 0; i < symbols.length; i++) {
+            for (let j = 0; j < vowels.length; j++) {
+                if (symbols[i] === vowels[j]) {
+                    countingVowels += 1
+                }
+            }
+        }
+        return (countingVowels)
+    }
+
+    counting(prompt('введите строку'))
+
+</script>
+</body>
+</html>

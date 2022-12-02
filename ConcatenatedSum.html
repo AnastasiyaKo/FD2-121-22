@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Concatenated Sum</title>
+</head>
+<body>
+<script>
+    function checkConcatenatedSum(num, n){
+        num = Math.abs(num)
+        let numStr = num.toString();
+        let arr = []
+        for (let i = 0; i < numStr.length; i++){
+            arr.push(numStr[i].repeat(n))
+        }
+        let sum = 0
+        for (let y=0; y < arr.length; y++){
+            if (num < 0){
+                sum -= Number(arr[y])
+            }
+            sum += Number(arr[y])
+        }
+        return (num === sum )
+    }
+    checkConcatenatedSum(2997,3)
+</script>
+</body>
+</html>
