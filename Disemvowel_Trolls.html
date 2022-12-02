@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function disemvowel(str) {
+        let newStr='';
+        let symbols = str.split('');
+        let vowels = ["a", "e", "i", "u", "o", "A", "E", "I", "U", "O"];
+        for (let i = 0; i < symbols.length; i++) {
+            if (!vowels.includes(symbols[i])) {
+                newStr += symbols[i]
+            }
+        }
+        return newStr;
+    }
+    disemvowel("This website is for losers LOL!")
+</script>
+</body>
+</html>

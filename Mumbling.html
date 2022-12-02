@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function accum(s) {
+        let arr = []
+        for (let i = 0; i < s.length; i++) {
+            arr.push(s[i].toUpperCase() + s[i].repeat(i*1).toLowerCase())
+        }
+        console.log(arr)
+        return arr.join('-')
+    }
+    accum("ZpglnRxqenU")
+</script>
+</body>
+</html>
