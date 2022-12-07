@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A3+</title>
+</head>
+<body>
+
+<script>
+
+    function palindromeSearch(str) {
+        let string = str.toLowerCase().replace(/[^a-zа-я]/gi, '', 'ь', 'ъ', 'е', 'ё');
+        let newString = string.split("").reverse().join("");
+            if (string === newString) {
+                alert('фраза является палиндромом');
+            } else {
+                alert('фраза не является палиндромом');
+            }
+        }
+
+    palindromeSearch(prompt('введите строку'))
+
+</script>
+
+</body>
+</html>
