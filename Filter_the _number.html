@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function filterString (value) {
+        let str=value.split('');
+        let numb=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        let res="";
+        for (let i = 0; i < str.length; i++) {
+            for (let j = 0; j < numb.length; j++) {
+                if (str[i] === numb[j]) {
+                    res += str[i]
+                }
+            }
+        }
+        return (Number(res))
+    }
+    filterString ()
+
+
+</script>
+</body>
+</html>
