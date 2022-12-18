@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A4+</title>
+</head>
+<body>
+
+<script>
+
+    function palindromeSearch(str) {
+        let string = str.toLowerCase().replace(/[^a-zа-я]/gi, '', 'ь', 'ъ', 'е', 'ё');
+
+        if (string.length < 2) {
+            return true;
+        } else if (string.slice(0, 1) === string.slice(-1)) {
+            return palindromeSearch(string.slice(1, -1));
+        } else return false;
+    }
+
+    function palindrome() {
+        const palindrome = prompt('Введите строку');
+        if (palindromeSearch(palindrome) === true) {
+            alert('фраза является палиндромом')
+        } else {
+            alert('фраза не является палиндромом')
+        }
+    }
+    palindrome();
+
+
+</script>
+
+</body>
+</html>
