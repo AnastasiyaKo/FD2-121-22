@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // сортировка массива
+
+
+    let arr = [7, 3, 13, 5, 134, 8, 1];
+    arr.sort(function (a, b) {
+            return a - b;
+        }
+    )
+    console.log(arr);
+
+    // сортировка массива с объектами
+
+
+    let arr = [
+        {one: 1, two: 2},
+        {one: 7, two: 1},
+        {one: 3, two: 3}
+    ];
+    arr.sort(function (a, b) {
+        return a.one - b.one;
+    })
+    console.log(arr)
+</script>
+</body>
+</html>

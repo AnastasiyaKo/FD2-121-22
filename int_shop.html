@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<style>
+    #app {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 300px);
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .render-button {
+        width: 270px;
+        margin: 30px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    input {
+        width: 270px;
+        margin-left: 30px;
+        margin-top: 30px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .card {
+        margin-right: 30px;
+    }
+
+    .buttons,
+    .add {
+        text-align: center;
+    }
+
+    hr {
+        border-top: 3px solid;
+        opacity: 0.5
+    }
+
+</style>
+
+<body>
+<div class="add">
+    <input type="text" placeholder="brandTitle" name="brandTitle">
+    <input type="text" placeholder="modelTitle" name="modelTitle">
+    <input type="text" placeholder="imgUrl" name="imgUrl">
+    <input type="text" placeholder="price" name="price"><br>
+    <button class="render-button" onclick="send()"> Добавить</button>
+</div>
+<hr>
+<div class="buttons">
+    <button class="render-button" onclick="render()"> Render</button>
+    <button class="render-button" onclick="sortToExpensive()"> По возрастанию цены</button>
+    <button class="render-button" onclick="sortToCheapest()"> По убыванию цены</button>
+</div>
+<div id="app"></div>
+
+<script>
+    const cars = [
+        {
+            id: 'BMW',
+            brandTitle: 'BMW',
+            modelTitle: '2 серия F44',
+            imgUrl: 'https://kolesa-uploads.ru/-/9ac9d438-0412-4157-a6c6-ce7fcbe31bbf/bmw-2-gran-coupe-front2-mini.jpg',
+            price: '42000'
+        },
+        {
+            id: 'Mers',
+            brandTitle: 'Mercedes-Benz',
+            modelTitle: 'CLA II',
+            imgUrl: 'https://avatars.mds.yandex.net/get-autoru-vos/2172345/b619f361358c26eb432fbe4631e48bf9/456x342n',
+            price: '48000'
+        },
+        {
+            id: 'Audi',
+            brandTitle: 'Audi',
+            modelTitle: 'A5 F5',
+            imgUrl: 'https://avatars.mds.yandex.net/get-verba/787013/2a0000016091d9545436c39267d5370e7b9b/cattouch',
+            price: '45000'
+        }
+    ]
+
+    const elem = document.getElementById('app');
+
+    function render() {
+        let str = "";
+        for (let i = 0; i < cars.length; i++) {
+            str = str + `<div class="card" style="width: 18rem;">
+  <img src="${cars[i].imgUrl}" class="card-img-top" alt="...">
+  <div class="card-body">
+  <h3 class="card-title">${cars[i].brandTitle}</h3>
+    <h5 class="card-title">${cars[i].modelTitle}</h5>
+    <p class="card-text">${cars[i].price}</p>
+    <a href="#" class="btn btn-primary">Купить</a>
+  </div>
+</div>`
+        }
+        elem.innerHTML = str;
+    }
+
+
+    function sortToExpensive() {
+        cars.sort(function (car1, car2) {
+            return car1.price - car2.price;
+        })
+        render()
+    }
+
+
+    function sortToCheapest() {
+        cars.sort(function (car1, car2) {
+            return car2.price - car1.price;
+        })
+        render()
+    }
+
+
+    function send() {
+        let brandTitle = document.querySelector("[name='brandTitle']").value;
+        let modelTitle = document.querySelector("[name='modelTitle']").value;
+        let imgUrl = document.querySelector("[name='imgUrl']").value;
+        let price = document.querySelector("[name='price']").value;
+
+        cars.push({
+            brandTitle, modelTitle, imgUrl, price
+        });
+        render()
+    }
+
+
+</script>
+</body>
+</html>
