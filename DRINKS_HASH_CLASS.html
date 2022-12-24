@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRINKS_HASH_CLASS</title>
+</head>
+<style>
+    .main {
+        width: 400px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    button {
+        height: 100px;
+        margin-top: 30px;
+        font-size: 24px;
+        font-weight: bold;
+        color: rgba(255, 255, 255, .6);
+        text-shadow: 1px 1px rgba(0, 0, 0, .3);
+        padding: 20px;
+        border-radius: 15px;
+        background: #306bb7d4;
+        box-shadow: inset 0 0 3px 1px rgba(0, 0, 0, .8),
+        inset rgba(0, 0, 0, .3) -5px -5px 8px 5px,
+        inset rgba(255, 255, 255, .5) 5px 5px 8px 5px,
+        1px 1px 1px rgba(255, 255, 255, .1),
+        -2px -2px 5px rgba(0, 0, 0, .5);
+        transition: .2s;
+    }
+
+    button:hover {
+        color: rgba(255, 255, 255, .9);
+        background: #6F8DB6CC;
+        cursor: pointer;
+    }
+
+    button:active {
+        background: #6F8DB6CC;
+        box-shadow: inset 0 0 5px 3px rgba(0, 0, 0, .8),
+        inset rgba(0, 0, 0, .3) -5px -5px 8px 5px,
+        inset rgba(255, 255, 255, .5) 5px 5px 8px 5px,
+        1px 1px 1px rgba(255, 255, 255, .2),
+        -2px -2px 5px rgba(0, 0, 0, .5);
+    }
+
+</style>
+<body>
+<div class="main">
+    <button onclick="addInfo()">Ввод информации о напитке</button>
+    <button onclick="getInfo()">Получение информации о напитке</button>
+    <button onclick="deleteInfo()">Удаление информации о напитке</button>
+    <button onclick="getAllList()">Перечень напитков</button>
+</div>
+
+<script>
+    class HashStorageClass {
+        constructor() {
+            this.storage = {};
+        }
+
+
+        addValue(key, value) {
+            this.storage[key] = value;
+        }
+
+        getValue(key) {
+            if (key in this.storage) {
+                return this.storage[key];
+            } else {
+                return undefined;
+            }
+        }
+
+        deleteValue(key) {
+            if (key in this.storage) {
+                delete this.storage[key];
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        getKeys() {
+            return Object.keys(this.storage);
+        }
+    }
+
+    const drinkStorage = new HashStorageClass();
+
+    const addInfo = () => {
+        let drinkName = prompt('Введите название напитка').toLowerCase();
+        let alcohol = prompt('Напиток алкогольный?').toLowerCase();
+        let drinkRecipe = prompt('Введите рецепт приготовления напитка');
+        return drinkStorage.addValue(drinkName, {alcohol, drinkRecipe});
+    }
+
+    const getInfo = () => {
+        let drinkName = prompt('Введите название напитка').toLowerCase();
+        let drinkInfo = drinkStorage.getValue(drinkName)
+        if (drinkInfo !== undefined) {
+            alert(`Напиток ${drinkName}
+                   Алкогольный: ${drinkInfo.alcohol}
+                   Рецепт приготовления: ${drinkInfo.drinkRecipe}`);
+        } else {
+            alert(`Напитка ${drinkName} нет в хранилище`);
+        }
+    }
+
+    const deleteInfo = () => {
+        let drinkName = prompt('Введите название напитка').toLowerCase();
+        if (drinkStorage.deleteValue(drinkName)) {
+            alert(`Напиток ${drinkName} удален из хранилища`);
+        } else {
+            alert(`Напиток ${drinkName} не найден`);
+        }
+    }
+
+    const getAllList = () => {
+        alert(`Перечень всех напитков в хранилище: ${drinkStorage.getKeys()}`);
+    }
+
+
+</script>
+</body>
+</html>
