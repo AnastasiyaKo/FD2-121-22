@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vowels_arr</title>
+</head>
+<body>
+<script>
+
+    let symbols = prompt('Введите строку').toLowerCase().split('');
+    let countingVowels = 0;
+    let vowels = ["а", "о", "и", "е", "ё", "э", "ы", "у", "ю", "я"];
+
+
+    let methodForEach = symbols => {
+        symbols.forEach(el => {
+            if (vowels.includes(el)) {
+                countingVowels += 1;
+            }
+        })
+        return countingVowels;
+    }
+
+
+    let methodFilter = symbols => {
+        symbols = symbols.filter(el => vowels.includes(el));
+        return symbols.length;
+    }
+
+
+    let methodReduce = symbols =>
+        symbols.reduce((countingVowels, el) => {
+            if (vowels.includes(el))
+                countingVowels += 1;
+            return countingVowels;
+        }, 0);
+
+
+    alert(`методом forEach ${methodForEach(symbols)} гласных,
+    методом filter ${methodFilter(symbols)} гласных,
+    методом reduce ${methodReduce(symbols)} гласных`
+    )
+
+</script>
+
+
+</body>
+</html>

@@ -17,8 +17,8 @@
         height: 70px;
         background: black;
         position: absolute;
-        left: 115px;
-        top: 115px;
+        left: 0px;
+        top: 0px;
     }
 </style>
 <body>
@@ -26,28 +26,49 @@
     <div id="square"></div>
 </div>
 <script>
+    // let square = document.getElementById('square')
+    // console.log(square)
+    // window.addEventListener('keydown', (e) => {
+    //     switch (e.keyCode) {
+    //         case 87:
+    //             square.style.top = square.offsetTop -1 + 'px';
+    //             console.log('up')
+    //             break;
+    //         case 68:
+    //             square.style.left = square.offsetLeft +1 + 'px';
+    //             console.log('right')
+    //             break;
+    //         case 83:
+    //             square.style.top = square.offsetTop  + 1 + 'px';
+    //             console.log('down')
+    //             break;
+    //         case 65:
+    //             square.style.left = square.offsetLeft - 1 + 'px' ;
+    //             console.log('left')
+    //             break;
+    //     }
+    // })
+
     let square = document.getElementById('square')
-    console.log(square)
+    let x = 0;
+    let y = 0;
     window.addEventListener('keydown', (e) => {
         switch (e.keyCode) {
             case 87:
-                square.style.top = square.offsetTop -1 + 'px';
-                console.log('up')
+                square.style.top = (x -= 10) + 'px';
                 break;
             case 68:
-                square.style.left = square.offsetLeft +1 + 'px';
-                console.log('right')
+                square.style.left = (y += 10) + 'px';
                 break;
             case 83:
-                square.style.top = square.offsetTop  + 1 + 'px';
-                console.log('down')
+                square.style.top = (x += 10) + 'px';
                 break;
             case 65:
-                square.style.left = square.offsetLeft - 1 + 'px';
-                console.log('left')
+                square.style.left = (y -= 10) + 'px';
                 break;
         }
     })
+
 
 </script>
 </body>
