@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let n = prompt('введите длину массива')
+    let x = parseInt(prompt('введите начальное число'));
+    let d = parseInt(prompt('введите разность между числами'));
+
+    function progression() {
+        let arr = [];
+        for (let i = 0; i < n-1; i++) {
+            arr[0] = x;
+            arr.push(arr[i]+d);
+        }
+        console.log(arr)
+    }
+
+    progression(n,x,d)
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let n = prompt('введите длину массива');
+    let x = parseInt(prompt('введите цифру для поиска в массиве'));
+
+    function searchNumber() {
+
+        let arr = [];
+        for (let i = 0; i < n; i++) {
+            arr.push(Math.round(Math.random() * 10));
+        }
+        console.log(arr)
+
+        let result = arr.includes(x)
+        console.log(result)
+    }
+
+    searchNumber(n, x)
+
+</script>
+</body>
+</html>

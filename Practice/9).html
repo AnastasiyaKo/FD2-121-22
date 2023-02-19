@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let x = parseInt(prompt('введите число, от которого фильтровать четные числа'));
+    let n = parseInt(prompt('введите число, до которого фильтровать четные числа'));
+
+    function evenNumbers() {
+        let arr = [];
+        for (let i = x; i <= n; i++) {
+            if (i % 2 === 0) {
+                arr.push(i);
+            }
+
+        }
+        console.log(arr)
+    }
+
+    evenNumbers(n,x)
+
+
+</script>
+</body>
+</html>

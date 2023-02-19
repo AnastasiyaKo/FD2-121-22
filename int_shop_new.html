@@ -66,21 +66,18 @@
 <script>
     const cars = [
         {
-            id: 'BMW',
             brandTitle: 'BMW',
             modelTitle: '2 серия F44',
             imgUrl: 'https://kolesa-uploads.ru/-/9ac9d438-0412-4157-a6c6-ce7fcbe31bbf/bmw-2-gran-coupe-front2-mini.jpg',
             price: '42000'
         },
         {
-            id: 'Mers',
             brandTitle: 'Mercedes-Benz',
             modelTitle: 'CLA II',
             imgUrl: 'https://avatars.mds.yandex.net/get-autoru-vos/2172345/b619f361358c26eb432fbe4631e48bf9/456x342n',
             price: '48000'
         },
         {
-            id: 'Audi',
             brandTitle: 'Audi',
             modelTitle: 'A5 F5',
             imgUrl: 'https://avatars.mds.yandex.net/get-verba/787013/2a0000016091d9545436c39267d5370e7b9b/cattouch',
@@ -88,14 +85,6 @@
         }
     ]
 
-    const elem = document.getElementById('app');
-    for (let i = 0; i < item.length; i++) {
-        createEl(items[i])
-    }
-
-    function handleClick(e) {
-        console.log(e.target.dataset.id)
-    }
 
 
 

@@ -4,7 +4,166 @@
     <meta charset="UTF-8">
     <title>DYN_FORM</title>
 </head>
+<style>
+    hr {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    textarea {
+        width: 50%;
+    }
+
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+    }
+
+</style>
 <body>
 
+<form action=" https://fe.it-academy.by/TestForm.php" method="post" name="form1"></form>
+<form action=" https://fe.it-academy.by/TestForm.php" method="post" name="form2"></form>
+
+
+<script>
+
+    let formDef1 = [
+        {label: 'Название сайта:', kind: 'longtext', name: 'sitename'},
+        {label: 'URL сайта:', kind: 'longtext', name: 'siteurl'},
+        {label: 'Посетителей в сутки:', kind: 'number', name: 'visitors'},
+        {label: 'E-mail для связи:', kind: 'shorttext', name: 'email'},
+        {
+            label: 'Рубрика каталога:', kind: 'combo', name: 'division', variants: [
+                {text: 'здоровье', value: 1},
+                {text: 'домашний уют', value: 2},
+                {text: 'бытовая техника', value: 3}]
+        },
+        {
+            label: 'Размещение:', kind: 'radio', name: 'payment', variants: [
+                {text: 'бесплатное', value: 1},
+                {text: 'платное', value: 2},
+                {text: 'VIP', value: 3}]
+        },
+        {label: 'Разрешить отзывы:', kind: 'check', name: 'votes'},
+        {label: 'Описание сайта:', kind: 'memo', name: 'description'},
+        {caption: 'Опубликовать', kind: 'submit'},
+    ];
+
+    let formDef2 = [
+        {label: 'Фамилия:', kind: 'longtext', name: 'lastname'},
+        {label: 'Имя:', kind: 'longtext', name: 'firstname'},
+        {label: 'Отчество:', kind: 'longtext', name: 'secondname'},
+        {label: 'Возраст:', kind: 'number', name: 'age'},
+        {caption: 'Зарегистрироваться', kind: 'submit'},
+    ];
+
+
+    let form1 = document.forms.form1;
+    let form2 = document.forms.form2;
+
+
+    function addElements(form, formDef) {
+
+        formDef.forEach(element => {
+            if (element.label) {
+                let labelElement = document.createElement("label"); //Создала тег label
+                labelElement.textContent = element.label; //Добавила в тег содержимое
+                labelElement.setAttribute("for", element.name); //Установила атрибут for,чтоб связать label с input
+                form.appendChild(labelElement); //Добавила новый элемент в тег form
+            }
+
+            if (element.kind === "longtext") {
+                let inputElement = document.createElement("input"); //Создала тег input
+                inputElement.type = "text"; //Установила атрибут type и значение на тег
+                inputElement.name = element.name; //Установила атрибут name
+                inputElement.id = element.name; //Установила атрибут id. Теперь при клике по label сфокусируется input
+                form.appendChild(inputElement); //Добавила новый элемент в тег form
+                form.appendChild(document.createElement("br"));
+            }
+
+            if (element.kind === "number") {
+                let inputElement = document.createElement("input");
+                inputElement.type = "number";
+                inputElement.name = element.name;
+                inputElement.id = element.name;
+                form.appendChild(inputElement);
+                form.appendChild(document.createElement("br"));
+
+            }
+
+            if (element.kind === "shorttext") {
+                let inputElement = document.createElement("input");
+                inputElement.type = "email";
+                inputElement.name = element.name;
+                inputElement.id = element.name;
+                form.appendChild(inputElement);
+                form.appendChild(document.createElement("br"));
+            }
+
+            if (element.kind === "combo") {
+                let selectElement = document.createElement("select"); //Создала тег select
+                selectElement.name = element.name;
+                form.appendChild(selectElement); //Добавила select в тег form
+
+                element.variants.forEach(el => {  //Перебираю массив объектов и создаю option
+                    let optionElement = document.createElement("option");
+                    optionElement.value = el.value;
+                    optionElement.textContent = el.text;
+                    selectElement.appendChild(optionElement); //Добавила option в select
+                });
+                form.appendChild(document.createElement("br"));
+            }
+
+            if (element.kind === "radio") {
+                element.variants.forEach(el => {
+
+                    let inputElement = document.createElement("input"); //Перебираю массив объектов и создаю input type ="radio"
+                    inputElement.type = "radio";
+                    inputElement.name = element.name;
+                    inputElement.value = el.value;
+                    inputElement.id = el.value; //Добавила id,чтоб потом связать через for с label
+                    form.appendChild(inputElement);
+
+                    let labelElement = document.createElement("label"); //Создаю label
+                    labelElement.textContent = el.text;
+                    labelElement.setAttribute("for", el.value); //Добавляю for и теперь при  клике на текст элемента label будет фокусироваться radio
+                    form.appendChild(labelElement);
+                })
+                form.appendChild(document.createElement("br"));
+            }
+
+            if (element.kind === "check") {
+                let inputElement = document.createElement("input");
+                inputElement.type = "checkbox";
+                inputElement.name = element.name;
+                form.appendChild(inputElement);
+                form.appendChild(document.createElement("br"));
+            }
+
+            if (element.kind === "memo") {
+                form.appendChild(document.createElement("br"));
+                let textAreaElement = document.createElement("textarea");
+                textAreaElement.name = element.name;
+                textAreaElement.id = element.name;
+                form.appendChild(textAreaElement);
+                form.appendChild(document.createElement("br"));
+            }
+
+            if (element.kind === "submit") {
+                let submitElement = document.createElement("input");
+                submitElement.type = "submit";
+                submitElement.value = element.caption;
+                form.appendChild(submitElement);
+            }
+        });
+    }
+
+    addElements(form1, formDef1);
+    addElements(form2, formDef2);
+
+</script>
 </body>
+
 </html>
